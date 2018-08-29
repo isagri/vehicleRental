@@ -8,7 +8,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Client List</title>
+	<title>Car List</title>
 	
 	<!-- JQuery 3.3.1 -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
