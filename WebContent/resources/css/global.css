@@ -10,3 +10,7 @@
 	background-color:#f5f5f5;
 	padding-top:10px;
 }
+
+.form-group, .button{
+	margin-left: 30%;
+}

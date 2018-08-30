@@ -37,6 +37,9 @@
 	    <li>
 	      <a class="nav-link" href="./booking.jsp">Booking</a>
 	    </li>
+	    <li>
+	      <a class="nav-link" href="./homePage.jsp">Home page</a>
+	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>User Connected: <%=client.getLogin() %></li>

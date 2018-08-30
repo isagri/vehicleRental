@@ -20,7 +20,7 @@
 	
 	<!-- General -->
 	<link rel="stylesheet" href="../resources/css/global.css" />
-	<script src="../resources/js/car.js"></script>s
+	<script src="../resources/js/car.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-light " id="header">
@@ -36,6 +36,9 @@
 	    </li>
 	    <li>
 	      <a class="nav-link" href="./booking.jsp">Booking</a>
+	    </li>
+	    <li>
+	      <a class="nav-link" href="./homePage.jsp">Home page</a>
 	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
