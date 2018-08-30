@@ -12,5 +12,9 @@
 }
 
 .form-group, .button{
-	margin-left: 30%;
+	margin-left: 250px;
+}
+
+.legend {
+	margin-left: 100px;
 }

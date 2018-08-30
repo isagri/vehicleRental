@@ -4,4 +4,12 @@
     <servlet-name>ClientServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ClientServlet</servlet-class>
   </servlet>
+  <servlet>
+		<servlet-name>HomePageServlet</servlet-name>
+		<servlet-class>com.campusnumerique.vehicle.servlet.homePage.HomePageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomePageServlet</servlet-name>
+		<url-pattern>/homePage</url-pattern>
+	</servlet-mapping>
 </web-app>
