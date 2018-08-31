@@ -28,16 +28,16 @@
 	 </a>
 	  <ul class="nav nav-pills">
 	    <li class="nav-item">
-	      <a class="nav-link" href="./clients.jsp">Client List</a>
+	      <a class="nav-link" href="./clients">Client List</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="./cars.jsp">Car List</a>
+	      <a class="nav-link" href="./cars">Car List</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./booking.jsp">Booking</a>
+	      <a class="nav-link" href="./booking">Booking</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./homePage.jsp">Home page</a>
+	      <a class="nav-link" href="./homePage">Home page</a>
 	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">

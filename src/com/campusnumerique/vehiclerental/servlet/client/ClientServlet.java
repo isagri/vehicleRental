@@ -1,30 +1,29 @@
 package com.campusnumerique.vehiclerental.servlet.client;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.campusnumerique.vehiclerental.entity.Client;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
 
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
 
 /**
  * Servlet implementation class MyServlet
  */
-@WebServlet("/ClientServlet")
 public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ClientDAO clientDAO=null;
     /**
      * @throws ClassNotFoundException 
      * @see HttpServlet#HttpServlet()
      */
+    
+    private ClientDAO clientDAO = null;
+    
     public ClientServlet() throws ClassNotFoundException {
         super();
         clientDAO= new ClientDAO();
@@ -33,28 +32,20 @@ public class ClientServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String wAction = "";
-		JSONObject responseData = new JSONObject();
-	    PrintWriter out = response.getWriter();
-		response.setContentType("application/json");
-		if(request.getParameter("action")!=null && !request.getParameter("action").equals("")){
-			wAction=request.getParameter("action");
-			if(wAction.equals("getClients")){
-				
-					JSONArray clients = clientDAO.findAllAsJson();
-					responseData.put("clients", clients);
-					response.setStatus(HttpServletResponse.SC_OK);
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/* Affichage de la page booking */
 
-			}
-			out.println(responseData.toString());
-		}
-		else{
-			response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
-			out.println("No action given");
+		try {
+			List<Client> clients = clientDAO.findAll();
+			request.setAttribute("clients", clients);
+			response.setStatus(HttpServletResponse.SC_OK);
+			this.getServletContext().getRequestDispatcher("/pages/clients.jsp").forward(request, response);
+		} catch (SQLException e) {
+
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

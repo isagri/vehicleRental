@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
+
+
 
 <jsp:useBean id="client" scope="session"
 	class="com.campusnumerique.vehiclerental.bean.ClientBean" />
@@ -19,25 +24,25 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	
 	<!-- General -->
-	<link rel="stylesheet" href="../resources/css/global.css" />
+	<link rel="stylesheet" href="./resources/css/global.css" />
 </head>
 <body>
 	<nav class="navbar navbar-light " id="header">
 	 <a class="navbar-brand" href="#">
-		<img  src="../resources/images/delorean.png"/>
+		<img  src="./resources/images/delorean.png"/>
 	 </a>
 	  <ul class="nav nav-pills">
 	    <li class="nav-item">
-	      <a class="nav-link" href="./clients.jsp">Client List</a>
+	      <a class="nav-link" href="./clients">Client List</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="./cars.jsp">Car List</a>
+	      <a class="nav-link" href="./cars">Car List</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./booking.jsp">Booking</a>
+	      <a class="nav-link" href="./booking">Booking</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./homePage.jsp">Home page</a>
+	      <a class="nav-link" href="./homePage">Home page</a>
 	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -61,7 +66,17 @@
 					</tr>
 				</thead>
 				<tbody>
-		
+					<c:forEach items="${cars}" var="car">
+						<tr>
+							<td>${car.brand}</td>
+							<td>${car.model}</td>
+							<td>${car.color}</td>
+							<td>${car.horsePower}</td>
+							<td>${car.plateNumber}</td>
+							<td>${car.price}</td>
+							<td>${car.kilometerRate}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
