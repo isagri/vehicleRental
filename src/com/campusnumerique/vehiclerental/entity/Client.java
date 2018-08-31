@@ -34,6 +34,19 @@ public class Client {
 		setLicenceNumber(licenceNumber);
 		setGuest(false);
 	}
+
+	public int getAge() {
+		return 23;
+	}
+
+
+	public boolean ableToBook() {
+		if (this.getAge() >= 18 && !this.getLicenceNumber().isEmpty() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public String getLogin() {
 		return login;
