@@ -17,6 +17,8 @@ import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.dao.CarDAO;
+import com.campusnumerique.vehiclerental.entity.Booking;
+import com.campusnumerique.vehiclerental.dao.BookingDAO;
 
 
 
@@ -28,6 +30,7 @@ public class HomePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private ClientDAO clientDAO=null;
     private CarDAO carDAO=null;
+    private BookingDAO bookingDAO=null;
 	public static final String VUE = "/pages/homePage.jsp";
 	public static final String VUEPOST = "/pages/booking.jsp";
 
@@ -43,10 +46,9 @@ public class HomePageServlet extends HttpServlet {
         super();
         clientDAO= new ClientDAO();
         carDAO= new CarDAO();
-
+        bookingDAO= new BookingDAO();
     }
 
-	
 	
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
          /*Affichage de la page d'inscription */
@@ -57,10 +59,11 @@ public class HomePageServlet extends HttpServlet {
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
     	
     	/* Affichage de la vue booking au post du formulaire*/
-    	
+  
+/*    	
     	RequestDispatcher rd = request.getRequestDispatcher("/booking");
         rd.forward(request,response);
-
+*/
         /* Récupérations des champs du formulaire */
     	
     	String firstName = request.getParameter( CHAMP_FIRSTNAME );
@@ -98,7 +101,39 @@ public class HomePageServlet extends HttpServlet {
     	System.out.println(client.getBirthDate());
     	System.out.println(client.getLicenceNumber());
     	System.out.println(client.getAge());
+
+    	
+    	if (!client.ableToBook())
+    		System.out.println("Erreur : client pas apte à conduire");
+
+    	boolean bookingClientDateExist=false;
+    	try {
+    		bookingClientDateExist = bookingDAO.existClientDate(client, startDate, endDate);
+    	} catch (Exception e) {
+    		
+    	}
+    	
+    	if (bookingClientDateExist)
+    		System.out.println("Erreur : déjà une réservation pour ce client");
+    	
+    	
+    	
+		List<Car> cars=new ArrayList<Car>();
+    	try {
+    		cars = carDAO.availableCar(23, startDate, endDate);
+    	} catch (Exception e) {
+    		
+    	}
 		
+    	for (Car car : cars) {
+			System.out.print(car.getBrand());
+			System.out.print("  ");
+			System.out.println(car.getHorsePower());
+		}
+    	    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/booking");
+        rd.forward(request,response);
+        
     	
     	
  

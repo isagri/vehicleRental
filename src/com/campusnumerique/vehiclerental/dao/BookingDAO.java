@@ -31,6 +31,23 @@ public class BookingDAO extends DAO<Booking>{
 		return false;
 	}
 
+	public boolean existClientDate(Client client, String startDate, String endDate) throws SQLException{
+
+		String requete = "SELECT * FROM booking WHERE id_client = " + client.getId() + " AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate"; 
+
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery(requete);
+		
+		if (result.first()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	
 	@Override
 	public Booking find(int id) throws SQLException{
 		Booking booking = new Booking();  

@@ -36,6 +36,16 @@ public class Client {
 		setGuest(false);
 	}
 
+
+
+	public boolean ableToBook() {
+		if (this.getAge() >= 18 && !this.getLicenceNumber().isEmpty() ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public String getLogin() {
 		return login;
 	}
@@ -124,11 +134,11 @@ public class Client {
 		this.licenceNumber = licenceNumber;
 	}
 
-	public long getAge() {
+	public int getAge() {
 
 		long millis = System.currentTimeMillis();
 		long date = getBirthDate().getTime();
-		long age = (long) ((millis - date) * 3.1709791983765E-11);
+		int age = (int) ((millis - date) * 3.1709791983765E-11);
 		
 
 		return age;
