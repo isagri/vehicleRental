@@ -1,5 +1,8 @@
 package com.campusnumerique.vehiclerental.entity;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.json.JSONObject;
 
 public class Car {
@@ -30,7 +33,7 @@ public class Car {
 		setHorsePower(horsePower);
 		
 	}
-	
+
 	public int getId() {
 		return id;
 	}

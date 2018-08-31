@@ -12,7 +12,7 @@ public abstract class DAO<T> {
   private String url = "localhost:3306";
   private String dbName = "vehiclerental";
   private String user = "root";
-  private String password = "";
+  private String password = "Campus74*";
   private String connectionUrl=null;
    
   public DAO(){

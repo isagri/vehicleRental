@@ -1,5 +1,6 @@
 package com.campusnumerique.vehiclerental.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import com.campusnumerique.vehiclerental.entity.Car;
@@ -13,13 +14,15 @@ public class Booking {
 	private Date startDate;
 	private Date endDate;
 	private int estimatedDistance;
-	private int estimatedPrice;
+	private float estimatedPrice;
 	private int realDistance;
-	private int realPrice;
+	private float realPrice;
 	
+	public Booking(){
+	}
 	
 	public Booking(int id, Client client, Car car, Date startDate, Date endDate, int estimatedDistance,
-			int estimatedPrice, int realDistance, int realPrice) {
+			float estimatedPrice, int realDistance, float realPrice) {
 		super();
 		this.id = id;
 		this.client = client;
@@ -32,8 +35,7 @@ public class Booking {
 		this.realPrice = realPrice;
 	}
 	
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -94,12 +96,12 @@ public class Booking {
 	}
 
 
-	public int getEstimatedPrice() {
+	public float getEstimatedPrice() {
 		return estimatedPrice;
 	}
 
 
-	public void setEstimatedPrice(int estimatedPrice) {
+	public void setEstimatedPrice(float estimatedPrice) {
 		this.estimatedPrice = estimatedPrice;
 	}
 
@@ -114,12 +116,12 @@ public class Booking {
 	}
 
 
-	public int getRealPrice() {
+	public float getRealPrice() {
 		return realPrice;
 	}
 
 
-	public void setRealPrice(int realPrice) {
+	public void setRealPrice(float realPrice) {
 		this.realPrice = realPrice;
 	}
 

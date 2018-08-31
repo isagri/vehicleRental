@@ -30,6 +30,8 @@ public class Client {
 		setLastName(lastName);
 		setMail(mail);
 		setBirthDate(birthDate);
+		setLicenceDate(licenceDate);
+		setLicenceNumber(licenceNumber);
 		setGuest(false);
 	}
 	

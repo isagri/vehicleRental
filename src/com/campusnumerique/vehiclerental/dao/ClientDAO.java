@@ -38,11 +38,29 @@ public class ClientDAO extends DAO<Client>{
 		    ResultSet.CONCUR_READ_ONLY
 		  ).executeQuery("SELECT * FROM client WHERE id = " + id);
 		if(result.first())
-			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("licenceDate"), result.getDate("birthDate"), result.getString("licenceNumber"), result.getBoolean("isGuest"));    
+			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("birthDate"), result.getDate("licenceDate"), result.getString("licenceNumber"), result.getBoolean("isGuest"));    
 		
 		return client;
 	}
 
+	public Client findName(String firstName, String lastName) throws SQLException{
+		Client client = new Client();  
+		String requete = "SELECT * FROM client WHERE firstname = '" + firstName + "' AND lastname = '" + lastName + "'";
+		
+		ResultSet result = this.connection.createStatement(
+		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
+		    ResultSet.CONCUR_READ_ONLY
+		  ).executeQuery(requete);
+
+		if(result.first())
+			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("birthDate"), result.getDate("licenceDate"), result.getString("licenceNumber"), result.getBoolean("isGuest"));    
+		
+		return client;
+	}
+
+	
+	
+	
 	@Override
 	public List<Client> findAll() throws SQLException{
 		ArrayList<Client> clients = new ArrayList<Client>();

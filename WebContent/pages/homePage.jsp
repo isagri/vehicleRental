@@ -54,8 +54,8 @@
    				 <input type="text" class="form-control" id="firstName" name="firstName">
   			</div>
   			<div class="form-group">
-    			<label for="lastName">First Name</label>
-   				 <input type="text" class="form-control" id="lastName" name="=lastName">
+    			<label for="lastName">Last Name</label>
+   				 <input type="text" class="form-control" id="lastName" name="lastName">
   			</div>
   			<div class="form-group">
    			 <label for="startDate">Start Date</label>
