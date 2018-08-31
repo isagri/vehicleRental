@@ -2,19 +2,12 @@ package com.campusnumerique.vehicle.servlet.homePage;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;;
 
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 
 public class HomePageServlet extends HttpServlet {
@@ -24,6 +17,8 @@ public class HomePageServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 	public static final String VUE = "/pages/homePage.jsp";
+	public static final String VUEPOST = "/pages/booking.jsp";
+
 	
 	public static final String CHAMP_FIRSTNAME = "firstName";
 	public static final String CHAMP_LASTNAME = "lastName";
@@ -32,10 +27,6 @@ public class HomePageServlet extends HttpServlet {
 	public static final String CHAMP_ESTIMATEDDISTANCE = "estimatedDistance";
 
 	
-	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	LocalDate localDate = LocalDate.now();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	String today = dtf.format(localDate);
 	
 
 	
@@ -47,6 +38,11 @@ public class HomePageServlet extends HttpServlet {
     }
     
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+    	
+    	/* Affichage de la vue booking au post du formulaire*/
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/booking");
+        rd.forward(request,response);
 
         /* Récupérations des champs du formulaire */
     	
@@ -56,17 +52,7 @@ public class HomePageServlet extends HttpServlet {
     	String endDate = request.getParameter( CHAMP_ENDDATE );
     	String estimatedDistance = request.getParameter( CHAMP_ESTIMATEDDISTANCE );
     	
-    	Date currentDate = null;
-		try {
-			currentDate = sdf.parse(today);
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-    	System.out.println(currentDate);
     	
-    	System.out.println(startDate);
-
     	
     	try {
     		validationFirstName(firstName);

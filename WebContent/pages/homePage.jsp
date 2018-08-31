@@ -34,10 +34,10 @@
 	      <a class="nav-link" href="./cars.jsp">Car List</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./booking.jsp">Booking</a>
+	      <a class="nav-link" href="./booking">Booking</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./homePage.jsp">Home page</a>
+	      <a class="nav-link" href="./homePage">Home page</a>
 	    </li>
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">

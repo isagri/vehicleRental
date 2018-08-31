@@ -12,4 +12,12 @@
 		<servlet-name>HomePageServlet</servlet-name>
 		<url-pattern>/homePage</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>BookingServlet</servlet-name>
+		<servlet-class>com.campusnumerique.vehicle.servlet.booking.BookingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingServlet</servlet-name>
+		<url-pattern>/booking</url-pattern>
+	</servlet-mapping>
 </web-app>
