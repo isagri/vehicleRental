@@ -4,6 +4,10 @@
     <servlet-name>ClientServlet</servlet-name>
     <servlet-class>com.campusnumerique.vehiclerental.servlet.client.ClientServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+		<servlet-name>ClientServlet</servlet-name>
+		<url-pattern>/clients</url-pattern>
+	</servlet-mapping>
   <servlet>
 		<servlet-name>HomePageServlet</servlet-name>
 		<servlet-class>com.campusnumerique.vehicle.servlet.homePage.HomePageServlet</servlet-class>
@@ -19,5 +23,13 @@
 	<servlet-mapping>
 		<servlet-name>BookingServlet</servlet-name>
 		<url-pattern>/booking</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>CarServlet</servlet-name>
+		<servlet-class>com.campusnumerique.vehicle.servlet.car.CarServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CarServlet</servlet-name>
+		<url-pattern>/cars</url-pattern>
 	</servlet-mapping>
 </web-app>

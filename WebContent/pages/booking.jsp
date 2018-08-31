@@ -33,10 +33,10 @@
 	 </a>
 	  <ul class="nav nav-pills">
 	    <li class="nav-item">
-	      <a class="nav-link" href="./clients.jsp">Client List</a>
+	      <a class="nav-link" href="./clients">Client List</a>
 	    </li>
 	    <li class="nav-item">
-	      <a class="nav-link" href="./cars.jsp">Car List</a>
+	      <a class="nav-link" href="./cars">Car List</a>
 	    </li>
 	    <li>
 	      <a class="nav-link" href="./booking">Booking</a>
