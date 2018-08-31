@@ -20,6 +20,8 @@ public class BookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private CarDAO carDAO = null;
+	
+	
 
 	public BookingServlet() throws ClassNotFoundException {
 		super();
@@ -27,6 +29,7 @@ public class BookingServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		/* Affichage de la page booking */
 
 		try {

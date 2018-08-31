@@ -39,13 +39,13 @@ public class HomePageServlet extends HttpServlet {
 	public static final String CHAMP_ESTIMATEDDISTANCE = "estimatedDistance";
 
 	
-/*    public HomePageServlet() throws ClassNotFoundException {
+    public HomePageServlet() throws ClassNotFoundException {
         super();
         clientDAO= new ClientDAO();
         carDAO= new CarDAO();
 
     }
-*/
+
 	
 	
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
@@ -79,7 +79,7 @@ public class HomePageServlet extends HttpServlet {
     	} catch (Exception e) {
     		/* Gérer les erreurs de validation ici*/
     	}
-/*
+
     	System.out.println(firstName);
     	System.out.println(lastName);
     	System.out.println(startDate);
@@ -97,7 +97,7 @@ public class HomePageServlet extends HttpServlet {
     	System.out.println(client.getLastName());
     	System.out.println(client.getBirthDate());
     	System.out.println(client.getLicenceNumber());
-  */  	
+    	System.out.println(client.getAge());
 		
     	
     	
