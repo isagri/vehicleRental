@@ -72,7 +72,8 @@ public class HomePageServlet extends HttpServlet {
     	String endDate = request.getParameter( CHAMP_ENDDATE ); 
     	String estimatedDistance = request.getParameter( CHAMP_ESTIMATEDDISTANCE );
     	
-
+    
+    	
     	try {
     		validationFirstName(firstName);
     		validationLastName(lastName);
@@ -118,7 +119,7 @@ public class HomePageServlet extends HttpServlet {
     	
 		List<Car> cars=new ArrayList<Car>();
     	try {
-    		cars = carDAO.availableCar(23, startDate, endDate);
+    		cars = carDAO.availableCar(23, startDate, endDate, estimatedDistance);
     	} catch (Exception e) {
     		
     	}
@@ -127,8 +128,9 @@ public class HomePageServlet extends HttpServlet {
 			System.out.print(car.getBrand());
 			System.out.print("  ");
 			System.out.println(car.getHorsePower());
+			System.out.println(car.getBookingPrice());
 		}
-    	    	
+    	 
     	RequestDispatcher rd = request.getRequestDispatcher("/booking");
         rd.forward(request,response);
         
@@ -144,7 +146,7 @@ public class HomePageServlet extends HttpServlet {
     }
     private void validationLastName( String lastName ) throws Exception {
     	if (lastName == null ){	
-    		throw new Exception("merci de renseigner votre prénom");
+    		throw new Exception("merci de renseigner votre nom");
     	}
     }
     private void validationStartDate( String startDate ) throws Exception {

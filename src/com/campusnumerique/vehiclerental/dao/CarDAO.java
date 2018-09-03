@@ -32,7 +32,7 @@ public class CarDAO extends DAO<Car>{
 
 	@Override
 	public Car find(int id)  throws SQLException {
-Car car = new Car();  
+		Car car = new Car();  
 		
 		ResultSet result = this.connection.createStatement(
 		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
@@ -79,18 +79,23 @@ Car car = new Car();
 		return cars;
 	}
 
-	public List<Car> availableCar(int age, String startDate, String endDate) throws SQLException{
+	public List<Car> availableCar(int age, String startDate, String endDate, String estimatedDistance) throws SQLException{
 		ArrayList<Car> cars = new ArrayList<Car>();
 		String requete = "";
 		
+		requete = "2";
+		int id = 2;
+				
+		
+		
 		if (age >= 25) { 
-			requete = "SELECT * FROM car WHERE NOT EXISTS ( SELECT * FROM booking WHERE id_car = car.id AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate)"; 
+			requete = "SELECT id, brand, model, color, plateNumber, kilometerRate, horsePower, price, price + kilometerRate * " + estimatedDistance + " as bookingPrice FROM car WHERE NOT EXISTS ( SELECT * FROM booking WHERE id_car = car.id AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate)"; 
 		} else {
 			int horsePower=8;
 			if (age >= 21) 
 				horsePower = 13;
 			
-			requete = "SELECT * FROM car WHERE horsePower< " + horsePower + " AND NOT EXISTS ( SELECT * FROM booking WHERE id_car = car.id AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate)"; 
+			requete = "SELECT id, brand, model, color, plateNumber, kilometerRate, horsePower, price, price + kilometerRate * " + estimatedDistance + " as bookingPrice FROM car WHERE horsePower< " + horsePower + " AND NOT EXISTS ( SELECT * FROM booking WHERE id_car = car.id AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate)"; 
 		}
 
 		ResultSet result = this.connection.createStatement(
@@ -98,7 +103,7 @@ Car car = new Car();
 		    ResultSet.CONCUR_READ_ONLY
 		  ).executeQuery(requete);
 		while(result.next()){
-			Car car = new Car(result.getInt("id"), result.getString("brand"), result.getString("model"), result.getString("plateNumber"), result.getString("color"), result.getFloat("price"), result.getFloat("kilometerRate"), result.getInt("horsePower"));         
+			Car car = new Car(result.getInt("id"), result.getString("brand"), result.getString("model"), result.getString("plateNumber"), result.getString("color"), result.getFloat("price"), result.getFloat("kilometerRate"), result.getInt("horsePower"), result.getFloat("bookingPrice") );         
 			cars.add(car);
 		}
 		return cars;

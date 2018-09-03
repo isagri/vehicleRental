@@ -63,6 +63,11 @@ values
 insert into client 
 (login, firstName, lastName, mail, birthDate, licenceDate, licenceNumber, isGuest) 
 values
+('isa','isabelle', 'grillet', 'isa@free.fr', '1968/06/25', '1986/09/01','1234567890', false);
+
+insert into client 
+(login, firstName, lastName, mail, birthDate, licenceDate, licenceNumber, isGuest) 
+values
 ('jul','julien', 'fourdachon', 'jul@free.fr', '1980/01/01', '2000/09/01','123777888', false);
 
 insert into car
@@ -79,3 +84,33 @@ insert into car
 (brand, model, color, plateNumber, kilometerRate, horsePower, price)
 values
 ('Mercedes','Benz','noir', 'ZZ 789 ZZ', 10.00, 23, 520.00);
+
+insert into booking
+(id_client,id_car,startDate, endDate)
+values
+(1,1,'2018/09/05','2018/09/10');
+
+insert into booking
+(id_client,id_car,startDate, endDate)
+values
+(1,1,'2018/09/07','2018/09/11');
+
+insert into booking
+(id_client,id_car,startDate, endDate)
+values
+(1,1,'2018/09/20','2018/09/25');
+
+
+
+/* requete sql = sélectionne les véhicules
+/*   de plus de 0 CV 
+/*   et sans réservation  du 2018-09-12 au 2018-09-15
+
+select id, brand, model, color, plateNumber, kilometerRate, horsePower, price, price + kilometerRate * 4 as bookingPrice 
+from car 
+where horsepower > 0 
+and   not exists
+  (select * 
+  from booking
+  where id_car = car.id 
+  and '2018-09-12'<=endDate and '2018-09-15'>=startDate);

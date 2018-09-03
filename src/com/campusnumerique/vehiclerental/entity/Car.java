@@ -15,6 +15,7 @@ public class Car {
 	private float price;
 	private float kilometerRate;
 	private int horsePower;
+	private float bookingPrice;
 	
 	
 	
@@ -32,6 +33,18 @@ public class Car {
 		setKilometerRate(kilometerRate);
 		setHorsePower(horsePower);
 		
+	}
+
+	public Car(int id, String brand, String model, String plateNumber, String color, float price, float kilometerRate, int horsePower, float bookingPrice){
+		setId(id);
+		setBrand(brand);
+		setModel(model);
+		setPlateNumber(plateNumber);
+		setColor(color);
+		setPrice(price);
+		setKilometerRate(kilometerRate);
+		setHorsePower(horsePower);
+		setBookingPrice(bookingPrice);
 	}
 
 	public int getId() {
@@ -73,6 +86,14 @@ public class Car {
 
 	public void setPrice(float price) {
 		this.price = price;
+	}
+
+	public float getBookingPrice() {
+		return bookingPrice;
+	}
+
+	public void setBookingPrice(float bookingPrice) {
+		this.bookingPrice = bookingPrice;
 	}
 
 	public float getKilometerRate() {
