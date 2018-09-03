@@ -1,10 +1,9 @@
 package com.campusnumerique.vehiclerental.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import org.json.JSONObject;
-
-import com.campusnumerique.vehiclerental.dao.DAO;
 
 public class Client {
 
@@ -16,16 +15,18 @@ public class Client {
 	private Date birthDate;
 	private Date licenceDate;
 	private String licenceNumber;
-	private boolean isGuest=false;
-	
-	public Client(){
+	private boolean isGuest = false;
+	long milliBirth;
+
+	public Client() {
 		setLogin("guest");
 		setGuest(true);
 	}
-	
-	public Client(int id, String login, String firstName, String lastName, String mail, Date birthDate, Date licenceDate, String licenceNumber, boolean isGuest){
+
+	public Client(int id, String login, String firstName, String lastName, String mail, Date birthDate,
+			Date licenceDate, String licenceNumber, boolean isGuest) {
 		setId(id);
-		setLogin(login);  
+		setLogin(login);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setMail(mail);
@@ -35,9 +36,6 @@ public class Client {
 		setGuest(false);
 	}
 
-	public int getAge() {
-		return 23;
-	}
 
 
 	public boolean ableToBook() {
@@ -51,25 +49,32 @@ public class Client {
 	public String getLogin() {
 		return login;
 	}
+
 	public void setLogin(String login) {
-		if(login!=null && !login.equals(""))
+		if (login != null && !login.equals(""))
 			this.login = login;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getMail() {
 		return mail;
 	}
+
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
@@ -89,9 +94,9 @@ public class Client {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public JSONObject getInfos(){
-		JSONObject infos= new JSONObject();
+
+	public JSONObject getInfos() {
+		JSONObject infos = new JSONObject();
 		infos.put("login", login);
 		infos.put("id", id);
 		infos.put("firstName", firstName);
@@ -100,8 +105,8 @@ public class Client {
 		infos.put("isGuest", isGuest);
 		return infos;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return getInfos().toString();
 	}
 
@@ -128,4 +133,15 @@ public class Client {
 	public void setLicenceNumber(String licenceNumber) {
 		this.licenceNumber = licenceNumber;
 	}
+
+	public int getAge() {
+
+		long millis = System.currentTimeMillis();
+		long date = getBirthDate().getTime();
+		int age = (int) ((millis - date) * 3.1709791983765E-11);
+		
+
+		return age;
+	}
+
 }

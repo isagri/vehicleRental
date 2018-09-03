@@ -23,7 +23,6 @@
 	
 	<!-- General -->
 	<link rel="stylesheet" href="./resources/css/global.css" />
-
 </head>
 <body>
 	<nav class="navbar navbar-light " id="header">
