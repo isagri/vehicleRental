@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.campusnumerique.vehiclerental.entity.Client;
+import com.sun.corba.se.spi.protocol.RequestDispatcherRegistry;
+
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
 import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.dao.CarDAO;
@@ -40,6 +44,7 @@ public class HomePageServlet extends HttpServlet {
 	public static final String CHAMP_STARTDATE = "startDate";
 	public static final String CHAMP_ENDDATE = "endDate";
 	public static final String CHAMP_ESTIMATEDDISTANCE = "estimatedDistance";
+	public static final String CHAMP_IDCLIENT = "id_client";
 
 	
     public HomePageServlet() throws ClassNotFoundException {
@@ -71,7 +76,6 @@ public class HomePageServlet extends HttpServlet {
     	String startDate = request.getParameter( CHAMP_STARTDATE ); 
     	String endDate = request.getParameter( CHAMP_ENDDATE ); 
     	String estimatedDistance = request.getParameter( CHAMP_ESTIMATEDDISTANCE );
-    	
 
     	try {
     		validationFirstName(firstName);
@@ -96,6 +100,11 @@ public class HomePageServlet extends HttpServlet {
     	} catch (Exception e) {
     		
     	}
+    	
+    	if( client == null){
+    		
+    	}
+    	System.out.println(client.getId());
     	System.out.println(client.getFirstName());
     	System.out.println(client.getLastName());
     	System.out.println(client.getBirthDate());
@@ -114,25 +123,16 @@ public class HomePageServlet extends HttpServlet {
     	}
     	
     	if (bookingClientDateExist)
-    		System.out.println("Erreur : déjà une réservation pour ce client");
+    		System.out.println("Erreur : déjà une réservation pour ce client à cette date");
     	
-    	
-    	
-		List<Car> cars=new ArrayList<Car>();
-    	try {
-    		cars = carDAO.availableCar(23, startDate, endDate);
-    	} catch (Exception e) {
-    		
-    	}
-		
-    	for (Car car : cars) {
-			System.out.print(car.getBrand());
-			System.out.print("  ");
-			System.out.println(car.getHorsePower());
-		}
-    	    	
+
     	RequestDispatcher rd = request.getRequestDispatcher("/booking");
-        rd.forward(request,response);
+		request.setAttribute("idClient", String.valueOf(client.getId()));
+		request.setAttribute("startDate", startDate);
+		request.setAttribute("endDate", endDate);
+		request.setAttribute("estimatedDistance", estimatedDistance);
+		request.setAttribute("action", "get");
+    	rd.forward(request,response);
         
     	
     	
