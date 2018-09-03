@@ -32,4 +32,12 @@
 		<servlet-name>CarServlet</servlet-name>
 		<url-pattern>/cars</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>confirmServlet</servlet-name>
+		<servlet-class>com.campusnumerique.vehicle.servlet.confirm.ConfirmServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>confirmServlet</servlet-name>
+		<url-pattern>/confirm</url-pattern>
+	</servlet-mapping>
 </web-app>

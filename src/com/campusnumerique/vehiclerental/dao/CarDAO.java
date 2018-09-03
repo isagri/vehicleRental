@@ -83,11 +83,6 @@ public class CarDAO extends DAO<Car>{
 		ArrayList<Car> cars = new ArrayList<Car>();
 		String requete = "";
 		
-		requete = "2";
-		int id = 2;
-				
-		
-		
 		if (age >= 25) { 
 			requete = "SELECT id, brand, model, color, plateNumber, kilometerRate, horsePower, price, price + kilometerRate * " + estimatedDistance + " as bookingPrice FROM car WHERE NOT EXISTS ( SELECT * FROM booking WHERE id_car = car.id AND '" + startDate + "'<= endDate AND '" + endDate + "'>= startDate)"; 
 		} else {

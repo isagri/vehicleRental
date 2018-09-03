@@ -2,6 +2,8 @@ package com.campusnumerique.vehicle.servlet.booking;
 
 import java.io.IOException;
 import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -74,9 +76,14 @@ public class BookingServlet extends HttpServlet {
 			System.out.println(car.getHorsePower());
 		}
     	
-		
+
+    	
 		request.setAttribute("cars", cars);
-		response.setStatus(HttpServletResponse.SC_OK);
+//		request.setAttribute("idClient", String.valueOf(client.getId()));
+//		request.setAttribute("startDate", startDate);
+//		request.setAttribute("endDate", endDate);
+//		request.setAttribute("estimatedDistance", estimatedDistance);
+//		response.setStatus(HttpServletResponse.SC_OK);
 		this.getServletContext().getRequestDispatcher("/pages/booking.jsp").forward(request, response);
 		
 	}
@@ -86,7 +93,21 @@ public class BookingServlet extends HttpServlet {
 			
 			doGet(request, response);
 		}else{
+			
 			//Action post via formulaire booking
+			int idClient = Integer.parseInt((String) request.getAttribute("idClient"));
+			String startDate = (String) request.getAttribute("startDate");
+			String endDate = (String) request.getAttribute("endDate");
+			String estimatedDistance = (String) request.getAttribute("estimatedDistance");
+			
+			System.out.println("reservation validée");
+			System.out.println(" id_client");
+			System.out.println(idClient);
+			System.out.println(" startDate");
+			System.out.println(startDate);
+			System.out.println("endDate");
+			System.out.println(endDate);
+			
 		}
 		
 	}
