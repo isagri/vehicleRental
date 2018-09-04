@@ -89,26 +89,8 @@ public class BookingServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if (request.getAttribute("action").equals("get") ){
 			
 			doGet(request, response);
-		}else{
-			
-			//Action post via formulaire booking
-			int idClient = Integer.parseInt((String) request.getAttribute("idClient"));
-			String startDate = (String) request.getAttribute("startDate");
-			String endDate = (String) request.getAttribute("endDate");
-			String estimatedDistance = (String) request.getAttribute("estimatedDistance");
-			
-			System.out.println("reservation validée");
-			System.out.println(" id_client");
-			System.out.println(idClient);
-			System.out.println(" startDate");
-			System.out.println(startDate);
-			System.out.println("endDate");
-			System.out.println(endDate);
-			
-		}
 		
 	}
 

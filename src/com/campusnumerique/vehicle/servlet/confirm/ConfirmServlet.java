@@ -7,8 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-
+import com.campusnumerique.vehiclerental.entity.Booking;
+import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
 import com.campusnumerique.vehiclerental.dao.CarDAO;
@@ -47,11 +49,26 @@ public class ConfirmServlet extends HttpServlet {
 	
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
          /*Affichage de la page d'inscription */
+
+    	HttpSession session = request.getSession(false);
+      
+	    Booking booking = (Booking) session.getAttribute("booking");
+	    System.out.println("session");
+	    System.out.println(booking.getClient().getFirstName());
+	    System.out.println(booking.getStartDate());
     	
     	String idCar = request.getParameter( "choice" );
     	System.out.println("car choisi");
     	System.out.println(idCar);
     	
+		Car car = null;
+		try {
+			car = carDAO.find(Integer.parseInt(idCar));
+		} catch (Exception e) {
+
+		}
+
+
  	
     	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

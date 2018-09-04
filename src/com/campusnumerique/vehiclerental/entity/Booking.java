@@ -21,8 +21,7 @@ public class Booking {
 	public Booking(){
 	}
 	
-	public Booking(int id, Client client, Car car, Date startDate, Date endDate, int estimatedDistance,
-			float estimatedPrice, int realDistance, float realPrice) {
+	public Booking(Client client, Date startDate, Date endDate, int estimatedDistance) {
 		super();
 		this.id = id;
 		this.client = client;
