@@ -1,6 +1,7 @@
 package com.campusnumerique.vehicle.servlet.confirm;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -69,8 +70,17 @@ public class ConfirmServlet extends HttpServlet {
 		} catch (Exception e) {
 
 		}
+		
+		booking.setCar(car);
+		
+		try {
+			bookingDAO.createBooking(booking);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
- 	
+		
     	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
     

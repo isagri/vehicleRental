@@ -45,9 +45,9 @@ public class BookingDAO extends DAO<Booking>{
 	}
 
 	
-	public void createBooking() throws SQLException {
+	public void createBooking(Booking booking) throws SQLException {
 		
-		Booking booking = new Booking();
+		
 		PreparedStatement preparedStatement = null;
 		
 		String sql = "INSERT INTO booking (id_client, id_car, startDate, endDate, estimatedDistance, estimatedPrice) VALUES (?,?,?,?,?,?)";
@@ -56,8 +56,8 @@ public class BookingDAO extends DAO<Booking>{
 		
 		preparedStatement.setInt(1, booking.getClient().getId());
 		preparedStatement.setInt(2, booking.getCar().getId());
-		preparedStatement.setDate(3, (java.sql.Date) booking.getStartDate());
-		preparedStatement.setDate(4, (java.sql.Date) booking.getEndDate());
+		preparedStatement.setDate(3,(java.sql.Date) booking.getStartDate());
+		preparedStatement.setDate(4, (java.sql.Date)booking.getEndDate());
 		preparedStatement.setInt(5, booking.getEstimatedDistance());
 		preparedStatement.setFloat(6, booking.getEstimatedPrice());
 		

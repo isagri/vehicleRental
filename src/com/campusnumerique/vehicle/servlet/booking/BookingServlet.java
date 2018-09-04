@@ -80,6 +80,8 @@ public class BookingServlet extends HttpServlet {
 		}
 
 		request.setAttribute("cars", cars);
+		
+		
 		this.getServletContext().getRequestDispatcher("/pages/booking.jsp").forward(request, response);
 
 	}
