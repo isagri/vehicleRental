@@ -1,8 +1,11 @@
 package com.campusnumerique.vehiclerental.dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.List;
 
 import com.campusnumerique.vehiclerental.entity.Booking;
@@ -45,19 +48,27 @@ public class BookingDAO extends DAO<Booking>{
 	}
 
 	
-	public void createBooking() throws SQLException {
+	public void createBooking(Booking booking) throws SQLException {
 		
-		Booking booking = new Booking();
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+		String stringStartDate = null;
+		stringStartDate = dateFormatter.format(booking.getStartDate());
+
+		String stringEndDate = null;
+		stringEndDate = dateFormatter.format(booking.getEndDate());
+
+		
 		PreparedStatement preparedStatement = null;
 		
 		String sql = "INSERT INTO booking (id_client, id_car, startDate, endDate, estimatedDistance, estimatedPrice) VALUES (?,?,?,?,?,?)";
 		
 		preparedStatement = connection.prepareStatement(sql);
 		
+
 		preparedStatement.setInt(1, booking.getClient().getId());
 		preparedStatement.setInt(2, booking.getCar().getId());
-		preparedStatement.setDate(3, (java.sql.Date) booking.getStartDate());
-		preparedStatement.setDate(4, (java.sql.Date) booking.getEndDate());
+		preparedStatement.setDate(3,java.sql.Date.valueOf(dateFormatter.format(booking.getStartDate())));
+		preparedStatement.setDate(4, java.sql.Date.valueOf(dateFormatter.format(booking.getEndDate())));
 		preparedStatement.setInt(5, booking.getEstimatedDistance());
 		preparedStatement.setFloat(6, booking.getEstimatedPrice());
 		

@@ -125,7 +125,7 @@ public class HomePageServlet extends HttpServlet {
 			System.out.println("Erreur : déjà une réservation pour ce client à cette date");
 
 		
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateStartDate = null;
 		try {
 			dateStartDate = dateFormatter.parse(startDate);
