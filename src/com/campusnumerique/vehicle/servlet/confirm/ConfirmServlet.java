@@ -72,6 +72,8 @@ public class ConfirmServlet extends HttpServlet {
 		}
 		
 		booking.setCar(car);
+		booking.setEstimatedPrice();
+		
 		
 		try {
 			bookingDAO.createBooking(booking);
@@ -79,8 +81,8 @@ public class ConfirmServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		
+	
     	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
     

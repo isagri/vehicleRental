@@ -97,8 +97,9 @@ public class Booking {
 	}
 
 
-	public void setEstimatedPrice(float estimatedPrice) {
-		this.estimatedPrice = estimatedPrice;
+	public void setEstimatedPrice() {
+		
+		this.estimatedPrice = car.getPrice() + (car.getKilometerRate() * estimatedDistance);
 	}
 
 
