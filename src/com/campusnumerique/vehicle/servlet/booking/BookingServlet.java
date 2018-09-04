@@ -3,11 +3,11 @@ package com.campusnumerique.vehicle.servlet.booking;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.campusnumerique.vehiclerental.entity.Booking;
 import com.campusnumerique.vehiclerental.entity.Car;
 import com.campusnumerique.vehiclerental.entity.Client;
 
@@ -28,8 +28,11 @@ public class BookingServlet extends HttpServlet {
 	private ClientDAO clientDAO=null;
     private CarDAO carDAO=null;
     private BookingDAO bookingDAO=null;
+    Booking booking = null;
+    Car car = null;
 	
-	
+	public static final String CHAMP_CHOICE = "choice";
+
 
 	public BookingServlet() throws ClassNotFoundException {
 		super();
@@ -39,6 +42,8 @@ public class BookingServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 
 		/* Affichage de la page booking */
 		int idClient = Integer.parseInt((String) request.getAttribute("idClient"));
@@ -75,41 +80,24 @@ public class BookingServlet extends HttpServlet {
 			System.out.print("  ");
 			System.out.println(car.getHorsePower());
 		}
+    
     	
 
     	
 		request.setAttribute("cars", cars);
-//		request.setAttribute("idClient", String.valueOf(client.getId()));
-//		request.setAttribute("startDate", startDate);
-//		request.setAttribute("endDate", endDate);
-//		request.setAttribute("estimatedDistance", estimatedDistance);
-//		response.setStatus(HttpServletResponse.SC_OK);
 		this.getServletContext().getRequestDispatcher("/pages/booking.jsp").forward(request, response);
 		
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		if (request.getAttribute("action").equals("get") ){
 			
 			doGet(request, response);
 		}else{
-			
-			//Action post via formulaire booking
-			int idClient = Integer.parseInt((String) request.getAttribute("idClient"));
-			String startDate = (String) request.getAttribute("startDate");
-			String endDate = (String) request.getAttribute("endDate");
-			String estimatedDistance = (String) request.getAttribute("estimatedDistance");
-			
-			System.out.println("reservation validée");
-			System.out.println(" id_client");
-			System.out.println(idClient);
-			System.out.println(" startDate");
-			System.out.println(startDate);
-			System.out.println("endDate");
-			System.out.println(endDate);
-			
-		}
-		
-	}
+				
+	    	String idCar = request.getParameter( CHAMP_CHOICE );
 
+		}		
+	}
 }

@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import java.util.Date;
 import java.util.List;
@@ -62,13 +62,9 @@ public class HomePageServlet extends HttpServlet {
     }
     
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+    	Client client=null;
+
     	
-    	/* Affichage de la vue booking au post du formulaire*/
-  
-/*    	
-    	RequestDispatcher rd = request.getRequestDispatcher("/booking");
-        rd.forward(request,response);
-*/
         /* Récupérations des champs du formulaire */
     	
     	String firstName = request.getParameter( CHAMP_FIRSTNAME );
@@ -76,6 +72,10 @@ public class HomePageServlet extends HttpServlet {
     	String startDate = request.getParameter( CHAMP_STARTDATE ); 
     	String endDate = request.getParameter( CHAMP_ENDDATE ); 
     	String estimatedDistance = request.getParameter( CHAMP_ESTIMATEDDISTANCE );
+    	
+    	
+    	/* Création de l'objet session avec les infos clients pour le moments */
+    	
 
     	try {
     		validationFirstName(firstName);
@@ -94,7 +94,9 @@ public class HomePageServlet extends HttpServlet {
     	System.out.println(estimatedDistance);
     	
     	
-    	Client client=null;
+    	
+    	
+    	
     	try {
     		client = clientDAO.findName(firstName, lastName);
     	} catch (Exception e) {
@@ -110,7 +112,8 @@ public class HomePageServlet extends HttpServlet {
     	System.out.println(client.getBirthDate());
     	System.out.println(client.getLicenceNumber());
     	System.out.println(client.getAge());
-
+    	
+   
     	
     	if (!client.ableToBook())
     		System.out.println("Erreur : client pas apte à conduire");

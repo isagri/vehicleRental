@@ -1,15 +1,12 @@
 package com.campusnumerique.vehiclerental.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Date;
-
 
 import com.campusnumerique.vehiclerental.entity.Booking;
 import com.campusnumerique.vehiclerental.entity.Client;
-import com.campusnumerique.vehiclerental.entity.Car;
 
 public class BookingDAO extends DAO<Booking>{
 
@@ -48,36 +45,37 @@ public class BookingDAO extends DAO<Booking>{
 	}
 
 	
-	@Override
-	public Booking find(int id) throws SQLException{
-		Booking booking = new Booking();  
+	public void createBooking() throws SQLException {
 		
-		ResultSet result = this.connection.createStatement(
-		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
-		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM booking WHERE id = " + id);
-		if(result.first())
-			booking = new Booking(result.getInt("id"),(Client) result.getObject("id_client"), (Car) result.getObject("id_car"), result.getDate("startDate"), result.getDate("endDate"), result.getInt("estimatedDistance"), result.getFloat("estimatedPrice"), result.getInt("realDistance"), result.getFloat("realPrice"));    
-
-		return booking;
+		Booking booking = new Booking();
+		PreparedStatement preparedStatement = null;
+		
+		String sql = "INSERT INTO booking (id_client, id_car, startDate, endDate, estimatedDistance, estimatedPrice) VALUES (?,?,?,?,?,?)";
+		
+		preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setInt(1, booking.getClient().getId());
+		preparedStatement.setInt(2, booking.getCar().getId());
+		preparedStatement.setDate(3, (java.sql.Date) booking.getStartDate());
+		preparedStatement.setDate(4, (java.sql.Date) booking.getEndDate());
+		preparedStatement.setInt(5, booking.getEstimatedDistance());
+		preparedStatement.setFloat(6, booking.getEstimatedPrice());
+		
+		preparedStatement.executeUpdate();
+		
+		
 	}
 
-
-	
-	
 	@Override
-	public List<Booking> findAll() throws SQLException{
-		ArrayList<Booking> bookings = new ArrayList<Booking>();
-		ResultSet result = this.connection.createStatement(
-		    ResultSet.TYPE_SCROLL_INSENSITIVE, 
-		    ResultSet.CONCUR_READ_ONLY
-		  ).executeQuery("SELECT * FROM booking");
-		while(result.next()){
-			Booking booking = new Booking(); 
-			booking = new Booking(result.getInt("id"),(Client) result.getObject("id_client"), (Car) result.getObject("id_car"), result.getDate("startDate"), result.getDate("endDate"), result.getInt("estimatedDistance"), result.getFloat("estimatedPrice"), result.getInt("realDistance"), result.getFloat("realPrice"));    
-			bookings.add(booking);
-		}
-		return bookings;
+	public Booking find(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Booking> findAll() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

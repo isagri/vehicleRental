@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.campusnumerique.vehiclerental.entity.Client;
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
@@ -46,12 +46,8 @@ public class ConfirmServlet extends HttpServlet {
 
 	
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-         /*Affichage de la page d'inscription */
-    	
-    	String idCar = request.getParameter( "choice" );
-    	System.out.println("car choisi");
-    	System.out.println(idCar);
-    	
+         
+    
  	
     	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

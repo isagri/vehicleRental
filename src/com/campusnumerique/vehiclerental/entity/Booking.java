@@ -21,19 +21,15 @@ public class Booking {
 	public Booking(){
 	}
 	
-	public Booking(int id, Client client, Car car, Date startDate, Date endDate, int estimatedDistance,
-			float estimatedPrice, int realDistance, float realPrice) {
+	public Booking(Client client, Date startDate, Date endDate, int estimatedDistance) {
 		super();
-		this.id = id;
 		this.client = client;
-		this.car = car;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.estimatedDistance = estimatedDistance;
-		this.estimatedPrice = estimatedPrice;
-		this.realDistance = realDistance;
-		this.realPrice = realPrice;
+		
 	}
+	
 	
 
 	public int getId() {
@@ -125,8 +121,10 @@ public class Booking {
 		this.realPrice = realPrice;
 	}
 
+	public void setClient(String firstName) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	
-	
 
 }
