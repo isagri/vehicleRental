@@ -29,7 +29,7 @@ public class ConfirmServlet extends HttpServlet {
     private ClientDAO clientDAO=null;
     private CarDAO carDAO=null;
     private BookingDAO bookingDAO=null;
-	public static final String VUE = "/pages/homePage.jsp";
+	public static final String VUE = "/pages/confirm.jsp";
 	public static final String VUEPOST = "/pages/booking.jsp";
 
 	

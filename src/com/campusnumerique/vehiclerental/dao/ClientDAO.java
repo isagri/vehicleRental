@@ -44,7 +44,7 @@ public class ClientDAO extends DAO<Client>{
 	}
 
 	public Client findName(String firstName, String lastName) throws SQLException{
-		Client client = new Client();  
+	Client client = null;
 		String requete = "SELECT * FROM client WHERE firstname = '" + firstName + "' AND lastname = '" + lastName + "'";
 		
 		ResultSet result = this.connection.createStatement(
@@ -52,9 +52,10 @@ public class ClientDAO extends DAO<Client>{
 		    ResultSet.CONCUR_READ_ONLY
 		  ).executeQuery(requete);
 
-		if(result.first())
+		if(result.first()){
+		    client = new Client();  
 			client = new Client(result.getInt("id"), result.getString("login"), result.getString("firstName"), result.getString("lastName"), result.getString("mail"), result.getDate("birthDate"), result.getDate("licenceDate"), result.getString("licenceNumber"), result.getBoolean("isGuest"));    
-		
+		}
 		return client;
 	}
 

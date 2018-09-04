@@ -52,22 +52,32 @@
   			<div class="form-group">
     			<label for="firstName">First Name</label>
    				 <input type="text" class="form-control" id="firstName" name="firstName">
+   				     <span class="erreur">${erreurs['firstName']}</span>
+   				 
   			</div>
   			<div class="form-group">
     			<label for="lastName">Last Name</label>
    				 <input type="text" class="form-control" id="lastName" name="lastName">
+   					 <span class="erreur">${erreurs['lastName']}</span>
+   				 
   			</div>
   			<div class="form-group">
    			 <label for="startDate">Start Date</label>
    			 <input type="date" class="form-control" id="startDate" name="startDate">
+   			    	<span class="erreur">${erreurs['startDate']}</span>
+   			 
  			 </div>
  			 <div class="form-group">
    			 <label for="endDate">End Date</label>
    			 <input type="date" class="form-control" id="endDate" name ="endDate">
+   			    	<span class="erreur">${erreurs['endDate']}</span>
+   			 
  			 </div>
  			 <div class="form-group">
    			 <label for="estimatedDistance">Estimated Distance</label>
    			 <input type="number" class="form-control" id="estimatedDistance" name ="estimatedDistance">
+    				   <span class="erreur">${erreurs['estimatedDistance']}</span>
+   			 
  			 </div>
   <button type="submit" class="btn btn-primary button">Check</button>
 </form>
