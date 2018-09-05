@@ -41,7 +41,7 @@
 	    </li> 
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li>User Connected: <%= client.getLogin() %></li>
+			<li>User Connected: <%=client.getLogin()%></li>
 		</ul>
 	</nav>
 	<div class="container" id="content">

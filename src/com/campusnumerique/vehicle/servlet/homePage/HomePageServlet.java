@@ -186,6 +186,7 @@ public class HomePageServlet extends HttpServlet {
 
 			session.setAttribute("booking", booking);
 			session.setAttribute("client", clientBean);
+			
 
 			RequestDispatcher rd = request.getRequestDispatcher("/booking");
 			
