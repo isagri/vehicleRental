@@ -15,8 +15,8 @@ public class Client {
 	private Date birthDate;
 	private Date licenceDate;
 	private String licenceNumber;
-	private String password;
 	private boolean isGuest = false;
+	private String password;
 	long milliBirth;
 
 	public Client() {
@@ -25,7 +25,7 @@ public class Client {
 	}
 
 	public Client(int id, String login, String firstName, String lastName, String mail, Date birthDate,
-			Date licenceDate, String licenceNumber, boolean isGuest) {
+			Date licenceDate, String licenceNumber, boolean isGuest, String password) {
 		setId(id);
 		setLogin(login);
 		setFirstName(firstName);
@@ -35,6 +35,7 @@ public class Client {
 		setLicenceDate(licenceDate);
 		setLicenceNumber(licenceNumber);
 		setGuest(false);
+		setPassword(password);
 	}
 
 

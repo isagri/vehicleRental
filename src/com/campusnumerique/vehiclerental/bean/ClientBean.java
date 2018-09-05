@@ -2,6 +2,7 @@ package com.campusnumerique.vehiclerental.bean;
 
 public class ClientBean  {
 
+	private int id;
 	private String login;
 	private String firstName;
 	private String lastName;
@@ -9,7 +10,6 @@ public class ClientBean  {
 	private String birthDate;
 	private String licenceDate;
 	private boolean isGuest=false;
-
 
 	public String getFirstName() {
 		return firstName;
@@ -75,6 +75,13 @@ public class ClientBean  {
 		this.login = login;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }
