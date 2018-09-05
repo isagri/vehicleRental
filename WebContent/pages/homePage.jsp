@@ -51,31 +51,31 @@
             <legend class="legend">Vehicle Rental</legend>
   			<div class="form-group">
     			<label for="firstName">First Name</label>
-   				 <input type="text" class="form-control" id="firstName" name="firstName">
+   				 <input type="text" class="form-control" id="firstName" name="firstName" value="${param.firstName}">
    				     <span class="erreur">${erreurs['firstName']}</span>
    				 
   			</div>
   			<div class="form-group">
     			<label for="lastName">Last Name</label>
-   				 <input type="text" class="form-control" id="lastName" name="lastName">
+   				 <input type="text" class="form-control" id="lastName" name="lastName" value="${param.lastName}">
    					 <span class="erreur">${erreurs['lastName']}</span>
    				 
   			</div>
   			<div class="form-group">
    			 <label for="startDate">Start Date</label>
-   			 <input type="date" class="form-control" id="startDate" name="startDate">
+   			 <input type="date" class="form-control" id="startDate" name="startDate" value="${param.startDate}">
    			    	<span class="erreur">${erreurs['startDate']}</span>
    			 
  			 </div>
  			 <div class="form-group">
    			 <label for="endDate">End Date</label>
-   			 <input type="date" class="form-control" id="endDate" name ="endDate">
+   			 <input type="date" class="form-control" id="endDate" name ="endDate" value="${param.endDate}">
    			    	<span class="erreur">${erreurs['endDate']}</span>
    			 
  			 </div>
  			 <div class="form-group">
    			 <label for="estimatedDistance">Estimated Distance</label>
-   			 <input type="number" class="form-control" id="estimatedDistance" name ="estimatedDistance">
+   			 <input type="number" class="form-control" id="estimatedDistance" name ="estimatedDistance" value="${param.estimatedDistance}">
     				   <span class="erreur">${erreurs['estimatedDistance']}</span>
    			 
  			 </div>

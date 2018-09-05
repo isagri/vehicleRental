@@ -64,6 +64,8 @@ public class HomePageServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		boolean isValidatedDate = true;
+
 		/* Affichage de la vue booking au post du formulaire */
 
 		/*
@@ -95,12 +97,23 @@ public class HomePageServlet extends HttpServlet {
 			validationStartDate(startDate);
 		} catch (Exception e) {
 			erreurs.put(CHAMP_STARTDATE, e.getMessage());
+			isValidatedDate = false;
 		}
 		try {
-			validationEndDate(endDate, startDate);
+			validationEndDate(endDate);
 		} catch (Exception e) {
 			erreurs.put(CHAMP_ENDDATE, e.getMessage());
+			isValidatedDate = false;
 		}
+
+		if (isValidatedDate) {
+			try {
+				validationEndDate2(endDate, startDate);
+			} catch (Exception e) {
+				erreurs.put(CHAMP_ENDDATE, e.getMessage());
+			}
+		}
+
 		try {
 			validationEstimatedDistance(estimatedDistance);
 		} catch (Exception e) {
@@ -147,7 +160,7 @@ public class HomePageServlet extends HttpServlet {
 			}
 
 			if (bookingClientDateExist)
-			erreurs.put(CHAMP_FIRSTNAME, "Erreur : déjà une réservation pour ce client à cette date");
+				erreurs.put(CHAMP_FIRSTNAME, "Erreur : déjà une réservation pour ce client à cette date");
 		}
 		if (erreurs.isEmpty()) {
 			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -197,24 +210,65 @@ public class HomePageServlet extends HttpServlet {
 	}
 
 	private void validationStartDate(String startDate) throws Exception {
-		if (startDate.trim().length() != 10) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date currenDate = new Date();
+		Date dateStart = null;
+		try {
+			dateStart = formatter.parse(startDate);
+		} catch (Exception e) {
 			throw new Exception("merci de renseigner une date valide");
+		}
+		int res = dateStart.compareTo(currenDate);
+		if (res < 0) {
+			throw new Exception("La date de début de réservation ne peut ");
 
 		}
+
 	}
 
-	private void validationEndDate(String endDate, String startDate) throws Exception {
-		int a = Integer.parseInt(startDate);
-		int b = Integer.parseInt(endDate);
+	private void validationEndDate(String endDate) throws Exception {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = null;
+		try {
+			date1 = formatter.parse(endDate);
+		} catch (Exception e) {
+			throw new Exception("merci de renseigner une date valide");
+		}
 
-		if (a > b || endDate.trim().length() != 10) {
+	}
+
+	private void validationEndDate2(String endDate, String startDate) throws Exception {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date date1 = formatter.parse(startDate);
+		Date date2 = null;
+
+		try {
+			date2 = formatter.parse(endDate);
+		} catch (Exception e) {
+			throw new Exception("merci de renseigner une date valide");
+		}
+		int res = date1.compareTo(date2);
+
+		if (res > 0) {
 			throw new Exception("La end Date ne peut être inférieure à la start Date, merci de changer votre choix");
 		}
+
 	}
 
 	private void validationEstimatedDistance(String estimatedDistance) throws Exception {
-		if (estimatedDistance == null || !estimatedDistance.matches("^[0-9]\\d4")) {
-			throw new Exception("Veuillez saisir une estimated Distance entre 1 et 9999");
+		long distanceEstimated = 0;
+
+		if (estimatedDistance.equals("")){
+			throw new Exception("veuillez remplir ce champ");
+		}
+		
+		try{
+		 distanceEstimated = Long.parseLong(estimatedDistance);
+		}catch (NumberFormatException e) {
+			throw new Exception("merci de rentrer uniquement des chiffres");
+		}
+		if(distanceEstimated <= 0 || distanceEstimated > 9999){
+			throw new Exception("la distance doit être comprise entre 1 et 9999");
 		}
 	}
 
