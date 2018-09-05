@@ -161,6 +161,7 @@ public class HomePageServlet extends HttpServlet {
 
 			if (bookingClientDateExist)
 				erreurs.put(CHAMP_FIRSTNAME, "Erreur : déjà une réservation pour ce client à cette date");
+	
 		}
 		if (erreurs.isEmpty()) {
 			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");

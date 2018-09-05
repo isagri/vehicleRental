@@ -82,7 +82,7 @@ public class ConfirmServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-	
+		request.setAttribute("booking", booking);
     	this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
     
