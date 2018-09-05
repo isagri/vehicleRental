@@ -15,6 +15,7 @@ public class Client {
 	private Date birthDate;
 	private Date licenceDate;
 	private String licenceNumber;
+	private String password;
 	private boolean isGuest = false;
 	long milliBirth;
 
@@ -142,6 +143,14 @@ public class Client {
 		
 
 		return age;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

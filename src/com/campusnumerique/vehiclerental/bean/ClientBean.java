@@ -1,6 +1,6 @@
 package com.campusnumerique.vehiclerental.bean;
 
-public class ClientBean {
+public class ClientBean  {
 
 	private String login;
 	private String firstName;
@@ -74,6 +74,7 @@ public class ClientBean {
 	public void setLogin(String login) {
 		this.login = login;
 	}
+
 	
 	
 }

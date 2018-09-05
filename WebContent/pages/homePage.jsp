@@ -38,7 +38,7 @@
 	    </li>
 	    <li>
 	      <a class="nav-link" href="./homePage">Home page</a>
-	    </li>
+	    </li> 
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>User Connected: <%= client.getLogin() %></li>
