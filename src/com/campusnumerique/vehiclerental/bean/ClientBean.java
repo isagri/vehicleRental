@@ -1,6 +1,6 @@
 package com.campusnumerique.vehiclerental.bean;
 
-public class ClientBean {
+public class ClientBean  {
 
 	private int id;
 	private String login;

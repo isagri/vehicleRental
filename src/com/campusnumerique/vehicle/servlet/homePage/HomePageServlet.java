@@ -12,21 +12,19 @@ import javax.servlet.http.HttpSession;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
-import java.util.ArrayList;
 
 import com.campusnumerique.vehiclerental.entity.Client;
-import com.sun.corba.se.spi.protocol.RequestDispatcherRegistry;
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 
 import com.campusnumerique.vehiclerental.dao.ClientDAO;
-import com.campusnumerique.vehiclerental.entity.Car;
+
 import com.campusnumerique.vehiclerental.dao.CarDAO;
 import com.campusnumerique.vehiclerental.entity.Booking;
 import com.campusnumerique.vehiclerental.dao.BookingDAO;
+
+import com.campusnumerique.vehiclerental.bean.ClientBean;
+
 
 public class HomePageServlet extends HttpServlet {
 	/**
@@ -179,13 +177,18 @@ public class HomePageServlet extends HttpServlet {
 			} catch (java.text.ParseException e) {
 				e.printStackTrace();
 			}
-
+			
 			Booking booking = new Booking(client, dateStartDate, dateEndDate, Integer.parseInt(estimatedDistance));
+			
+			ClientBean clientBean = new ClientBean(firstName);
+			
 			HttpSession session = request.getSession();
 
 			session.setAttribute("booking", booking);
+			session.setAttribute("client", clientBean);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/booking");
+			
 			request.setAttribute("idClient", String.valueOf(client.getId()));
 			request.setAttribute("startDate", startDate);
 			request.setAttribute("endDate", endDate);

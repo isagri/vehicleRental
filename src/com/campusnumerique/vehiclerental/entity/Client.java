@@ -15,6 +15,7 @@ public class Client {
 	private Date birthDate;
 	private Date licenceDate;
 	private String licenceNumber;
+	private String password;
 	private boolean isGuest = false;
 	private String password;
 	long milliBirth;
