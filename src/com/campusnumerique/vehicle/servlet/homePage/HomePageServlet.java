@@ -179,13 +179,10 @@ public class HomePageServlet extends HttpServlet {
 			}
 			
 			Booking booking = new Booking(client, dateStartDate, dateEndDate, Integer.parseInt(estimatedDistance));
+		
 			
-			ClientBean clientBean = new ClientBean(firstName);
-			
-			HttpSession session = request.getSession();
-
+			HttpSession session = request.getSession(false);
 			session.setAttribute("booking", booking);
-			session.setAttribute("client", clientBean);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/booking");
 			

@@ -71,7 +71,9 @@ public class SigninServlet extends HttpServlet {
 			erreurs.put(CHAMP_FIRSTNAME, "Client inexistant : merci de vous inscrire");
 		}
 		
-
+		if (client == null) {
+			erreurs.put(CHAMP_FIRSTNAME, "Client inexistant : merci de vous inscrire");
+		}
 		if (client != null) {
 
 			if (!password.equals(client.getPassword()))
@@ -84,10 +86,11 @@ public class SigninServlet extends HttpServlet {
 			clientBean.setLastName(lastName);
 			clientBean.setId(client.getId());
 			clientBean.setGuest(client.isGuest());
+			clientBean.setLogin(client.getLogin());
 			
 			HttpSession session = request.getSession();
 
-			session.setAttribute("clientBean", clientBean);
+			session.setAttribute("client", clientBean);
 
 			this.getServletContext().getRequestDispatcher("/homePage").forward(request, response);
 		} else {
