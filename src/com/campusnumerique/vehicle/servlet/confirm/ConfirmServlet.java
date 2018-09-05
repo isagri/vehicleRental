@@ -73,7 +73,7 @@ public class ConfirmServlet extends HttpServlet {
 		
 		booking.setCar(car);
 		booking.setEstimatedPrice();
-		
+		// il faudrait retester que la voiture est tjs dispo
 		
 		try {
 			bookingDAO.createBooking(booking);
