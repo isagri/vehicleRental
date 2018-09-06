@@ -40,6 +40,18 @@ public class Client {
 
 
 
+	public Client(String login, String firstName, String lastName, String mail, Date birthDate, Date licenceDate, String licenceNumber, String password) {
+		setLogin(login);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setMail(mail);
+		setBirthDate(birthDate);
+		setLicenceDate(licenceDate);
+		setLicenceNumber(licenceNumber);
+		setPassword(password);
+
+	}
+
 	public boolean ableToBook() {
 		if (this.getAge() >= 18 && !this.getLicenceNumber().isEmpty() ) {
 			return true;

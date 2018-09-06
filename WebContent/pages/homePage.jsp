@@ -27,18 +27,21 @@
 		<img  src="./resources/images/delorean.png"/>
 	 </a>
 	  <ul class="nav nav-pills">
+	    <li>
+	      <a class="nav-link" href="./">Home page</a>
+	    </li>
 	    <li class="nav-item">
 	      <a class="nav-link" href="./clients">Client List</a>
 	    </li>
 	    <li class="nav-item">
 	      <a class="nav-link" href="./cars">Car List</a>
+	    </li>  
+	    <li>
+	      <a class="nav-link" href="./login">Sign In</a>
 	    </li>
 	    <li>
-	      <a class="nav-link" href="./booking">Booking</a>
+	      <a class="nav-link" href="./signup">Sign up</a>
 	    </li>
-	    <li>
-	      <a class="nav-link" href="./homePage">Home page</a>
-	    </li> 
 	   </ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li>User Connected: <%=client.getLogin()%></li>

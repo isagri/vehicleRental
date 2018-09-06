@@ -47,14 +47,7 @@ public class BookingServlet extends HttpServlet {
 		String startDate = (String) request.getAttribute("startDate");
 		String endDate = (String) request.getAttribute("endDate");
 		String estimatedDistance = (String) request.getAttribute("estimatedDistance");
-		
 
-		System.out.println(" id_client");
-		System.out.println(idClient);
-		System.out.println(" startDate");
-		System.out.println(startDate);
-		System.out.println("endDate");
-		System.out.println(endDate);
 
 		Client client = null;
 		try {
