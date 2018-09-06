@@ -23,8 +23,6 @@ import com.campusnumerique.vehiclerental.dao.CarDAO;
 import com.campusnumerique.vehiclerental.entity.Booking;
 import com.campusnumerique.vehiclerental.dao.BookingDAO;
 
-import com.campusnumerique.vehiclerental.bean.ClientBean;
-
 
 public class HomePageServlet extends HttpServlet {
 	/**
@@ -131,12 +129,6 @@ public class HomePageServlet extends HttpServlet {
 
 		/* Gérer les erreurs de validation ici */
 
-		System.out.println(firstName);
-		System.out.println(lastName);
-		System.out.println(startDate);
-		System.out.println(endDate);
-		System.out.println(estimatedDistance);
-
 		Client client = null;
 		try {
 			client = clientDAO.findName(firstName, lastName);
@@ -183,6 +175,7 @@ public class HomePageServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(false);
 			session.setAttribute("booking", booking);
+
 
 			RequestDispatcher rd = request.getRequestDispatcher("/booking");
 			

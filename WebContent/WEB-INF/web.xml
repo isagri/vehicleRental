@@ -22,9 +22,8 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>HomePageServlet</servlet-name>
-		<url-pattern>/homePage</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
 	<servlet>
 		<servlet-name>BookingServlet</servlet-name>
 		<servlet-class>com.campusnumerique.vehicle.servlet.booking.BookingServlet</servlet-class>
@@ -59,6 +58,14 @@
 	<servlet-mapping>
 		<servlet-name>ClientServlet</servlet-name>
 		<url-pattern>/clients</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>SignUpServlet</servlet-name>
+		<servlet-class>com.campusnumerique.vehiclerental.servlet.signup.SignUpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignUpServlet</servlet-name>
+		<url-pattern>/signup</url-pattern>
 	</servlet-mapping>
 
 </web-app>

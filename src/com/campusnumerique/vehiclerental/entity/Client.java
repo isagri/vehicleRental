@@ -15,7 +15,6 @@ public class Client {
 	private Date birthDate;
 	private Date licenceDate;
 	private String licenceNumber;
-	private String password;
 	private boolean isGuest = false;
 	private String password;
 	long milliBirth;
@@ -40,6 +39,18 @@ public class Client {
 	}
 
 
+
+	public Client(String login, String firstName, String lastName, String mail, Date birthDate, Date licenceDate, String licenceNumber, String password) {
+		setLogin(login);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setMail(mail);
+		setBirthDate(birthDate);
+		setLicenceDate(licenceDate);
+		setLicenceNumber(licenceNumber);
+		setPassword(password);
+
+	}
 
 	public boolean ableToBook() {
 		if (this.getAge() >= 18 && !this.getLicenceNumber().isEmpty() ) {
