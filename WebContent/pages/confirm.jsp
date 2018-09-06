@@ -51,7 +51,7 @@
 		</div>
 		<div class="row">
 			<div class = "col-lg-4">Numero de reservation : ${booking.id}</div>
-			<div class = "col-lg-4">Nom du conducteur : <%=client.getFirstName()%> <%=client.getLastName()%></div>
+			<div class = "col-lg-4">Nom du conducteur : ${booking.client.firstName} ${booking.client.lastName}</div>
 		</div>
 		
 		<div class="row">
