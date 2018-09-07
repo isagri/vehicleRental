@@ -35,7 +35,7 @@
 	</a>
 	<ul class="nav nav-pills">
 		<li>
-	      <a class="nav-link" href="./">Home page</a>
+	      <a class="nav-link" href="./homePage">Home page</a>
 	    </li>
 	    <li class="nav-item">
 	      <a class="nav-link" href="./clients">Client List</a>

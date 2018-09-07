@@ -6,7 +6,33 @@
 	<session-config> 
 		<session-timeout>5</session-timeout>
 	</session-config>
-	
+
+    <filter>
+        <filter-name>RestrictionFilter</filter-name>
+        <filter-class>com.campusnumerique.vehiclerental.filter.RestrictionFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>RestrictionFilter</filter-name>
+        <url-pattern>/homePage</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RestrictionFilter</filter-name>
+        <url-pattern>/booking</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RestrictionFilter</filter-name>
+        <url-pattern>/confirm</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RestrictionFilter</filter-name>
+        <url-pattern>/client</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RestrictionFilter</filter-name>
+        <url-pattern>/car</url-pattern>
+    </filter-mapping>
+
 	<servlet>
 		<servlet-name>SigninServlet</servlet-name>
 		<servlet-class>com.campusnumerique.vehicle.servlet.signin.SigninServlet</servlet-class>
@@ -22,7 +48,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>HomePageServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/homePage</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>BookingServlet</servlet-name>
