@@ -8,10 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.json.JSONArray;
 
-import com.campusnumerique.vehiclerental.entity.Booking;
 import com.campusnumerique.vehiclerental.entity.Client;
+
+
 
 public class ClientDAO extends DAO<Client> {
 
@@ -100,6 +104,7 @@ public class ClientDAO extends DAO<Client> {
 		}
 		return clients;
 	}
+	
 
 	public void createClient(Client client) throws SQLException {
 

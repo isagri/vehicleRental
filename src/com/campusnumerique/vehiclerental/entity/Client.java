@@ -3,6 +3,9 @@ package com.campusnumerique.vehiclerental.entity;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
+
 import org.json.JSONObject;
 
 public class Client {
@@ -18,6 +21,8 @@ public class Client {
 	private boolean isGuest = false;
 	private String password;
 	long milliBirth;
+	private String strKey = "toto";
+	private String encryptPassword;
 
 	public Client() {
 		setLogin("guest");
@@ -48,7 +53,7 @@ public class Client {
 		setBirthDate(birthDate);
 		setLicenceDate(licenceDate);
 		setLicenceNumber(licenceNumber);
-		setPassword(password);
+		setEncryptPassword(password);
 
 	}
 
@@ -164,6 +169,43 @@ public class Client {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String encryptPassword(String password){
+		 String encrypt = "";
+		try {
+			encrypt = encrypt(password, this.strKey);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return encrypt;
+	}
+	
+	public void setEncryptPassword(String password){
+		try {
+			this.password = encrypt(password, this.strKey);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("");
+		}
+	}
+	
+	public static String encrypt(String password,String strKey) throws Exception{
+		String encryptPassword="";
+		
+		try {
+			SecretKeySpec skeyspec=new SecretKeySpec(strKey.getBytes(),"Blowfish");
+			Cipher cipher=Cipher.getInstance("Blowfish");
+			cipher.init(Cipher.ENCRYPT_MODE, skeyspec);
+			byte[] encrypted=cipher.doFinal(password.getBytes());
+			encryptPassword=new String(encrypted);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return encryptPassword;
 	}
 
 }

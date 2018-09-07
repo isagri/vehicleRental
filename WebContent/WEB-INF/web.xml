@@ -22,7 +22,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>HomePageServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/homePage</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>BookingServlet</servlet-name>
