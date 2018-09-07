@@ -30,6 +30,7 @@ public class SigninServlet extends HttpServlet {
 	public static final String CHAMP_PASSWORD = "password";
 	public static final String ATT_ERREURS = "erreurs";
 	public static final String ATT_RESULTAT = "resultat";
+	
 
 	public SigninServlet() throws ClassNotFoundException {
 		super();
@@ -75,11 +76,12 @@ public class SigninServlet extends HttpServlet {
 			erreurs.put(CHAMP_FIRSTNAME, "Client inexistant : merci de vous inscrire");
 		}
 		if (client != null) {
-
-			if (!password.equals(client.getPassword()))
+			String hash = client.encryptPassword(password);
+			if (!hash.equals(client.getPassword())){
+				String hash2 = client.getPassword();
 				erreurs.put(CHAMP_PASSWORD, "Mot de passe invalide");
 		}
-
+		}
 		if (erreurs.isEmpty()) {
 			ClientBean clientBean = new ClientBean();
 			clientBean.setFirstName(firstName);
@@ -115,7 +117,6 @@ public class SigninServlet extends HttpServlet {
 			throw new Exception("merci de renseigner votre nom");
 		}
 	}
-
-
+	
 	
 }
